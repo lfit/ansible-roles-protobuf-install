@@ -11,7 +11,8 @@ None.
 Role Variables
 --------------
 
-None.
+protoc_checksum: Checksum for Google protocol buffers compiler binary.
+protobuf_version: Version of Google protocol buffers to install.
 
 Dependencies
 ------------
@@ -25,7 +26,9 @@ None.
 
     - hosts: servers
       roles:
-         - { role: lfit.protobuf-install }
+         - role: lfit.protobuf-install
+           protobuf_version: 3.5.1
+           protoc_checksum: sha256:cd40f10bcdaff36429ec4652210f2bb8d6c7349e7b78f3a38ef42168401d7285
 
 License
 -------

@@ -2,4 +2,6 @@
 - name: Prepare
   hosts: all
   gather_facts: false
-  tasks: []
+  tasks:
+    - name: Install Unzip
+      package: name=unzip state=present
