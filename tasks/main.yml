@@ -1,18 +1,18 @@
 ---
-- name: 'Download protoc binary {{protobuf_version}}'
+- name: 'Download protoc binary {{ protobuf_version }}'
   get_url:
-    url: https://github.com/google/protobuf/releases/download/v{{protobuf_version}}/protoc-{{protobuf_version}}-linux-x86_64.zip
-    dest: /tmp/protobuf-{{protobuf_version}}-linux-x86_64.zip
-    checksum: '{{protoc_checksum}}'
+    url: https://github.com/google/protobuf/releases/download/v{{ protobuf_version }}/protoc-{{ protobuf_version }}-linux-x86_64.zip
+    dest: /tmp/protobuf-{{ protobuf_version }}-linux-x86_64.zip
+    checksum: '{{ protoc_checksum }}'
 
 - name: Ensure protoc unpack directory exists
   file:
     path: /tmp/protoc
     state: directory
 
-- name: 'Unarchive protoc {{protobuf_version}} binary'
+- name: 'Unarchive protoc {{ protobuf_version }} binary'
   unarchive:
-    src: /tmp/protobuf-{{protobuf_version}}-linux-x86_64.zip
+    src: /tmp/protobuf-{{ protobuf_version }}-linux-x86_64.zip
     dest: /tmp/protoc
     remote_src: true
 
