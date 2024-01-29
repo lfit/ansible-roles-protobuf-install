@@ -3,7 +3,8 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+  # no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+  no_log: true
   vars:
     molecule_file: "{{ lookup('env', 'MOLECULE_FILE') }}"
     molecule_ephemeral_directory: "{{ lookup('env', 'MOLECULE_EPHEMERAL_DIRECTORY') }}"
@@ -18,7 +19,7 @@
       register: platforms
 
     - name: Discover local Docker images
-      docker_image_facts:
+      docker_image_info:
         name: "molecule_local/{{ item.item.name }}"
       with_items: "{{ platforms.results }}"
       register: docker_images
