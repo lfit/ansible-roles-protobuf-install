@@ -1,3 +1,7 @@
 ---
-protobuf_version: 3.5.1
-protoc_checksum: sha256:cd40f10bcdaff36429ec4652210f2bb8d6c7349e7b78f3a38ef42168401d7285
+packages:
+  - zip
+  - unzip
+
+protobuf_version: 25.2
+protoc_checksum: sha256:78ab9c3288919bdaa6cfcec6127a04813cf8a0ce406afa625e48e816abee2878
