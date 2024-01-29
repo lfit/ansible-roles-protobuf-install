@@ -3,11 +3,15 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint tasks/*.yml
 platforms:
-  - name: instance
+  - name: centos7
     image: centos:7
+  - name: centos8
+    image: quay.io/pycontribs/centos:stream8
 provisioner:
   name: ansible
   lint:
