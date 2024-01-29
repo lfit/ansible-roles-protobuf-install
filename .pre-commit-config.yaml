@@ -1,11 +1,17 @@
 ---
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.3.0
+    rev: v4.5.0
     hooks:
       - id: trailing-whitespace
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.11.0
+    rev: v0.19.1
     hooks:
       - id: gitlint
+
+  - repo: https://github.com/ansible-community/ansible-lint.git
+    rev: v6.11.0
+    hooks:
+      - id: ansible-lint
+        files: \.(yaml|yml)$
