@@ -1,23 +1,25 @@
 ---
 - name: 'Download protoc binary {{ protobuf_version }}'
-  get_url:
+  ansible.builtin.get_url:
     url: https://github.com/google/protobuf/releases/download/v{{ protobuf_version }}/protoc-{{ protobuf_version }}-linux-x86_64.zip
     dest: /tmp/protobuf-{{ protobuf_version }}-linux-x86_64.zip
     checksum: '{{ protoc_checksum }}'
+    mode: '0644'
 
 - name: Ensure protoc unpack directory exists
-  file:
+  ansible.builtin.file:
     path: /tmp/protoc
     state: directory
+    mode: '0755'
 
-- name: 'Unarchive protoc {{ protobuf_version }} binary'
-  unarchive:
+- name: 'Unarchive protoc binary: {{ protobuf_version }}'
+  ansible.builtin.unarchive:
     src: /tmp/protobuf-{{ protobuf_version }}-linux-x86_64.zip
     dest: /tmp/protoc
     remote_src: true
 
 - name: Copy Protoc binary to /usr/local/bin
-  copy:
+  ansible.builtin.copy:
     src: /tmp/protoc/bin/protoc
     dest: /usr/local/bin/protoc
     mode: 0755
@@ -26,12 +28,14 @@
   become: true
 
 - name: Copy Protoc includes to /usr/local/include
-  command: cp -r /tmp/protoc/include/google /usr/local/include
+  ansible.builtin.command: cp -r /tmp/protoc/include/google /usr/local/include
   when: true
   become: true
+  args:
+    creates: "/usr/local/include/google/*"
 
 - name: Set permissions on /usr/local/include/google
-  file:
+  ansible.builtin.file:
     path: /usr/local/include/google
     mode: 0755
     owner: root
