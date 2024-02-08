@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a14725f_48bef9d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 192
+      },
+      "writtenOn": "2024-02-08T18:26:38Z",
+      "side": 1,
+      "message": "I think the GHA workflow should be pulled from this patch. There\u0027s a lot going on here already, and I think introducing that in this commit is just a bit much. I think simply pulling it out and making it a subsequent commit from this would be a lot better.",
+      "revId": "b317d84b6a1095c8e61d8bea6371cd6b9747fa7e",
+      "serverId": "f2a2391d-0403-4fa5-b183-4056999a8a09"
+    }
+  ]
+}
